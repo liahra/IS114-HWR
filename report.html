@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Report</title>
+  </head>
+  <style>
+    canvas {
+      border: 0px solid black;
+      margin: 0 5px;
+    }
+
+    #report {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    div > h1 {
+      text-align: center;
+    }
+
+    .question {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+    }
+
+    .left {
+      text-align: right;
+    }
+
+    #infoBox {
+      display: flex;
+      flex-direction: column;
+      margin-left: 7em;
+      margin-top: 9.9em;
+    }
+
+    #infoBox > div {
+      display: flex;
+      margin: 0.5em 0; 
+    }
+    
+  </style>
+  <body>
+    <div id="report">
+      <div class="container">
+        <h1>Report</h1>
+        <h2>Mål med studiet:</h2>
+        <div id="maal"></div>
+        <h2>Tidligere erfaringer</h2>
+        <ul id="erfaringer"></ul>
+        <!-- Spørsmålene starter her -->
+        <div class="question">
+          <div class="left">Morgenfugl</div>
+          <canvas id="q1" width="415" height="50"></canvas>
+          <div class="right">Nattugle</div>
+        </div>
+
+        <div class="question">
+          <div class="left">Jobbe sammen</div>
+          <canvas id="q2" width="415" height="50"></canvas>
+          <div class="right">Jobbe alene</div>
+        </div>
+
+        <div class="question">
+          <div class="left">Fortell meg historien bak</div>
+          <canvas id="q3" width="415" height="50"></canvas>
+          <div class="right">Kom til poenget</div>
+        </div>
+
+        <div class="question">
+          <div class="left">Trenger å snakke om det</div>
+          <canvas id="q4" width="415" height="50"></canvas>
+          <div class="right">Trenger å gå videre</div>
+        </div>
+
+        <div class="question">
+          <div class="left">Prosesserer verbalt</div>
+          <canvas id="q5" width="415" height="50"></canvas>
+          <div class="right">Prosesserer mentalt</div>
+        </div>
+
+        <div class="question">
+          <div class="left">Avtal tid for å snakke</div>
+          <canvas id="q6" width="415" height="50"></canvas>
+          <div class="right">Forstyrr meg når du trenger meg</div>
+        </div>
+
+        <div class="question">
+          <div class="left">Videokommunikasjon</div>
+          <canvas id="q7" width="415" height="50"></canvas>
+          <div class="right">Tekstkommunikasjon</div>
+        </div>
+
+        <div class="question">
+          <div class="left">Satt timeplan</div>
+          <canvas id="q8" width="415" height="50"></canvas>
+          <div class="right">Åpen timeplan</div>
+
+        <!-- Slutten på spørsmålene -->
+      </div>
+    </div>
+    <div id="infoBox"></div>
+  </body>
+  <script>
+
+    let userData = [
+      { trxid: "d4a610241f7c81699903cdb7aa2fdbd6", 
+        time: "20221104194402" },
+      {
+        trxid: "88bb1ecb0bd66dc0bf77ab5c25224971",
+        time: "20221104194605",
+      },
+      {
+        trxid: "8fe4c2fc0360e3e894884fe6f97804bd",
+        time: "20221104194805",
+      },
+      {
+        trxid: "bf5d0743c56cc0c3eeb738b73ee93c78",
+        time: "20221104194946",
+      },
+      {
+        trxid: "b16d54c84fe493632ef682a895e3c77d",
+        time: "20221104195124",
+      },
+      {
+        trxid: "10becf2f2e04646f0be85e5923ece504",
+        time: "20221104195305",
+      },
+      {
+        trxid: "9e32a026cdbd988cf37098e7bcbbe25b",
+        time: "20221104195544",
+      }
+    ];
+
+    // Loop gjennom datasettet, og produser en rapport
+    for (entry of userData) {
+      // Lag en url
+      const url = `https://bacit.info/hwr/${entry.time}-${entry.trxid}.json`;
+
+      // Fetcher data
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => addToReport(data));
+    }
+
+    function addToReport(data) {
+      drawInfoBox(data);
+      // Hvor skal dataene legges?
+      const erfaringer = document.getElementById('erfaringer');
+      // Hva slags element skal dataene ligge i?
+      const erfaringsDiv = document.createElement('li');
+      // Legg til dataene i elementet
+      erfaringsDiv.innerHTML = `${data.firstName}: ${data.erfaringer}`;
+      // Legg elementet til der dataene skal ligge.
+      erfaringer.appendChild(erfaringsDiv);
+
+      const prioritet = document.getElementById('maal');
+      const prioriteringsDiv = document.createElement('div');
+      prioriteringsDiv.innerHTML = `${data.firstName}: ${data.maal}`;
+      prioritet.appendChild(prioriteringsDiv);
+
+
+      console.log(data);
+      // Spørsmål 1-8
+      drawQuestion(1, data.question1, data.userColor);
+      drawQuestion(2, data.question2, data.userColor);
+      drawQuestion(3, data.question3, data.userColor);
+      drawQuestion(4, data.question4, data.userColor);
+      drawQuestion(5, data.question5, data.userColor);
+      drawQuestion(6, data.question6, data.userColor);
+      drawQuestion(7, data.question7, data.userColor);
+      drawQuestion(8, data.question8, data.userColor);
+    }
+
+    function drawInfoBox(data) {
+      // Legg navnet til infoboksen til høyre
+      // Lag et canvas til å tegne sirkelen i
+      let infoCanvas = document.createElement("canvas");
+      infoCanvas.width = 20;
+      infoCanvas.height = 20;
+      // Get context
+      let infoCtx = infoCanvas.getContext("2d");
+      infoCtx.fillStyle = data.userColor;
+      infoCtx.beginPath();
+      infoCtx.arc(10, 10, 10, 0, 2 * Math.PI);
+      infoCtx.fill();
+
+      // Lag en egen div til navnet
+      let userName = document.createElement("div");
+      userName.innerText = data.firstName;
+
+      // Legg canvaset og brukernavnet til en egen div
+      let user = document.createElement("div");
+      user.appendChild(infoCanvas);
+      user.appendChild(userName);
+
+      // Legg diven til infoboksen
+      const infoBox = document.getElementById("infoBox");
+      infoBox.appendChild(user);
+    }
+
+    function drawQuestion(questionNumber, questionValue, currentColor) {
+      // Id til canvaset
+      let canvasId = `q${questionNumber}`;
+
+      // Hent canvaset
+      const q1 = document.getElementById(canvasId);
+
+      // Canvas offsets
+      let offsetX = (q1.width - 400) / 2;
+
+      // Hent context
+      const c1 = q1.getContext("2d");
+
+      // Fargen på linja
+      c1.fillStyle = "black";
+      // Bredden til linja
+      c1.lineWidth = 0.1;
+      // Stiplet?
+      c1.setLineDash([4, 2]);
+      // Tegn linja
+      c1.moveTo(0 + offsetX, q1.height / 2);
+      c1.lineTo(q1.width - offsetX, q1.height / 2);
+      c1.stroke();
+
+      // Sentrum i sirkelen
+      const circleCentreX =
+        (parseInt(questionValue) * (q1.width - offsetX * 2)) / 100;
+      // Tegn sirkel
+      c1.setLineDash([]);
+      c1.lineWidth = 1;
+      c1.fillStyle = currentColor;
+      c1.beginPath();
+      c1.arc(circleCentreX + offsetX, q1.height / 2, 5, 0, 2 * Math.PI);
+      c1.fill();
+      c1.stroke();
+    }
+    
+  </script>
+</html>
