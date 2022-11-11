@@ -3,6 +3,7 @@ canvas {
   margin: 0 5px;
 }
 
+
 #report {
   display: flex;
   justify-content: center;
@@ -17,21 +18,32 @@ canvas {
   margin-left: 100px;
   margin-bottom: 50px;
 }
+
+.container, 
+.title, 
+.title-text, 
+.range-questions-container > h2,
 div > h1 {
   text-align: center;
 }
 
-.question {
+.question, .range-question {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
 }
 
-.range-questions-container > h2 {
-  text-align: center;
-}
-.left {
+.left, .range-left {
   text-align: right;
+}
+
+.right, .range-right {
+  text-align: left;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
 }
 
 #infoBox {
