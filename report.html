@@ -18,7 +18,7 @@
         <div class="input-container">
           <div class="input">
             <h2>Våre studiemål:</h2>
-            <div id="maal"></div>
+            <div id="goals"></div>
           </div>
           <div class="input">
             <h2>Studieprioritering:</h2>
@@ -145,22 +145,22 @@
       erfaringer.appendChild(erfaringsDiv);
 
       // Henter mål
-      const maal = document.getElementById('maal');
-      const maalDiv = document.createElement('div');
-      maalDiv.innerHTML = `${data.firstName}: ${data.maal}`;
-      maal.appendChild(maalDiv);
+      const goals = document.getElementById('goals');
+      const goalsDiv = document.createElement('div');
+      goalsDiv.innerHTML = `${data.firstName}: ${data.maal}`;
+      goals.appendChild(goalsDiv);
 
       // Henter prioritering
-      const prioritering = document.getElementById('prioritering');
+      const priorities = document.getElementById('prioritering');
       const prioDiv = document.createElement('div');
       prioDiv.innerHTML = `${data.firstName}: ${data.prioritering}`;
-      prioritering.appendChild(prioDiv);
+      priorities.appendChild(prioDiv);
 
       // Henter styrker
-      const styrke = document.getElementById('styrke');
-      const styrkeDiv = document.createElement('div');
-      styrkeDiv.innerHTML = `${data.firstName}: ${data.styrke}`;
-      styrke.appendChild(styrkeDiv);
+      const strengths = document.getElementById('styrke');
+      const strengthsDiv = document.createElement('div');
+      strengthsDiv.innerHTML = `${data.firstName}: ${data.styrke}`;
+      strengths.appendChild(strengthsDiv);
 
       // Spørsmål 1-8
       drawQuestion(1, data.question1, data.userColor);
