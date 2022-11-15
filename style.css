@@ -12,6 +12,7 @@ canvas {
 
 .input-container {
   display: flex;
+  justify-content: center;
 }
 
 .input {
@@ -57,3 +58,4 @@ div > h1 {
   display: flex;
   margin: 0.5em .5em; 
 }
+
