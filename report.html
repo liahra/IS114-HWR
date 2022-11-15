@@ -26,7 +26,7 @@
           </div>
           <div class="input">
             <h2>Våre tidligere erfaringer:</h2>
-            <div id="erfaringer"></div>
+            <div id="experience"></div>
           </div>
           <div class="input">
             <h2>Våre personlige styrker:</h2>
@@ -135,34 +135,14 @@
 
     function addToReport(data) {
       drawInfoBox(data);
-      // Hvor skal dataene legges?
-      const erfaringer = document.getElementById('erfaringer');
-      // Hva slags element skal dataene ligge i?
-      const erfaringsDiv = document.createElement('div');
-      // Legg til dataene i elementet
-      erfaringsDiv.innerHTML = `${data.firstName}: ${data.erfaringer}`;
-      // Legg elementet til der dataene skal ligge.
-      erfaringer.appendChild(erfaringsDiv);
 
-      // Henter mål
-      const goals = document.getElementById('goals');
-      const goalsDiv = document.createElement('div');
-      goalsDiv.innerHTML = `${data.firstName}: ${data.maal}`;
-      goals.appendChild(goalsDiv);
+      // Henter mål, erfaring, prioriterting og styrker
+      addGoals(data);
+      addExperiences(data);
+      addPriorities(data);
+      addStrengths(data);
 
-      // Henter prioritering
-      const priorities = document.getElementById('prioritering');
-      const prioDiv = document.createElement('div');
-      prioDiv.innerHTML = `${data.firstName}: ${data.prioritering}`;
-      priorities.appendChild(prioDiv);
-
-      // Henter styrker
-      const strengths = document.getElementById('styrke');
-      const strengthsDiv = document.createElement('div');
-      strengthsDiv.innerHTML = `${data.firstName}: ${data.styrke}`;
-      strengths.appendChild(strengthsDiv);
-
-      // Spørsmål 1-8
+      // Henter spørsmål 1-8
       drawQuestion(1, data.question1, data.userColor);
       drawQuestion(2, data.question2, data.userColor);
       drawQuestion(3, data.question3, data.userColor);
@@ -171,6 +151,38 @@
       drawQuestion(6, data.question6, data.userColor);
       drawQuestion(7, data.question7, data.userColor);
       drawQuestion(8, data.question8, data.userColor);
+    }
+
+    function addGoals(data) {
+      // Hvor skal dataene legges?
+      const goals = document.getElementById('goals');
+      // Hva slags element skal dataene ligge i?
+      const goalsDiv = document.createElement('div');
+      // Legg til dataene i elementet
+      goalsDiv.innerHTML = `${data.firstName}: ${data.maal}`;
+      // Legg elementet til der dataene skal ligge.
+      goals.appendChild(goalsDiv);
+    }
+
+    function addPriorities(data) {
+      const priorities = document.getElementById('prioritering');
+      const prioDiv = document.createElement('div');
+      prioDiv.innerHTML = `${data.firstName}: ${data.prioritering}`;
+      priorities.appendChild(prioDiv);
+    }
+
+    function addStrengths(data) {
+      const strengths = document.getElementById('styrke');
+      const strengthsDiv = document.createElement('div');
+      strengthsDiv.innerHTML = `${data.firstName}: ${data.styrke}`;
+      strengths.appendChild(strengthsDiv);
+    }
+
+    function addExperiences(data) {
+      const experience = document.getElementById('experience');
+      const experienceDiv = document.createElement('div');
+      experienceDiv.innerHTML = `${data.firstName}: ${data.erfaringer}`;
+      experience.appendChild(experienceDiv);
     }
 
     function drawInfoBox(data) {
@@ -203,16 +215,12 @@
     function drawQuestion(questionNumber, questionValue, currentColor) {
       // Id til canvaset
       let canvasId = `q${questionNumber}`;
-
       // Hent canvaset
       const q1 = document.getElementById(canvasId);
-
       // Canvas offsets
       let offsetX = (q1.width - 400) / 2;
-
       // Hent context
       const c1 = q1.getContext("2d");
-
       // Fargen på linja
       c1.fillStyle = "black";
       // Bredden til linja
@@ -225,8 +233,7 @@
       c1.stroke();
 
       // Sentrum i sirkelen
-      const circleCentreX =
-        (parseInt(questionValue) * (q1.width - offsetX * 2)) / 100;
+      const circleCentreX = (parseInt(questionValue) * (q1.width - offsetX * 2)) / 100;
       // Tegn sirkel
       c1.setLineDash([]);
       c1.lineWidth = 1;
