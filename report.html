@@ -16,32 +16,31 @@
       <div class="container">
         <h1>Rapport</h1>
         <div class="input-container">
-        <div class="upper-input-container">
-          <div class="input">
-            <h2>Våre studiemål:</h2>
-            <div id="goals"></div>
+          <div class="upper-input-container">
+            <div class="input">
+              <h2>Våre studiemål:</h2>
+              <div id="goals"></div>
+            </div>
+            <div class="input">
+              <h2>Studieprioritering:</h2>
+              <div id="prioritering"></div>
+            </div>
           </div>
-          <div class="input">
-            <h2>Studieprioritering:</h2>
-            <div id="prioritering"></div>
+          <div class="lower-input-container">
+            <div class="input">
+              <h2>Våre tidligere erfaringer:</h2>
+              <div id="experience"></div>
+            </div>
+            <div class="input">
+              <h2>Våre personlige styrker:</h2>
+              <div id="styrke"></div>
+            </div>
           </div>
         </div>
-        <div class="lower-input-container">
-          <div class="input">
-            <h2>Våre tidligere erfaringer:</h2>
-            <div id="experience"></div>
-          </div>
-          <div class="input">
-            <h2>Våre personlige styrker:</h2>
-            <div id="styrke"></div>
-          </div>
-        </div>
-      </div>
         
-
-        <div class="range-questions-container">
-          <h2>Hvor vi er på en skala:</h2>
-        <!-- Spørsmålene starter her -->
+      <div class="range-questions-container">
+        <h2>Hvor vi er på en skala:</h2>
+      <!-- Spørsmålene starter her -->
         <div class="question">
           <div class="left">Morgenfugl</div>
           <canvas id="q1" width="415" height="50"></canvas>
@@ -88,13 +87,14 @@
           <div class="left">Satt timeplan</div>
           <canvas id="q8" width="415" height="50"></canvas>
           <div class="right">Åpen timeplan</div>
-        <!-- Slutten på spørsmålene -->
-      </div>
         </div>
       </div>
-    </div>
+      </div>
+    </div> 
+
     <div id="infoBox"></div>
   </body>
+
   <script>
 
     let userData = [
@@ -249,4 +249,23 @@
     }
     
   </script>
+  
+  <script>
+    // Script for testing
+    function testaddPriorities(data) {
+      const expectedOutcome = <div id="prioritering"><div>Marihøne: medium</div></div>;
+      const actualOutcome = addPriorities(data);
+      const actualOutcomeOuter = actualOutcome.outerHTML;
+      console.assert(expectedOutcome === actualOutcome.outerHTML, {
+        expectedOutcome,
+        actualOutcomeOuter
+      });
+    }
+
+    testaddPriorities({
+      firstName: "Marihøne",
+      prioritering: "medium",
+    });
+  </script>
+  
 </html>
