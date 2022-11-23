@@ -5,28 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css">
-    <title>INPUT</title>
+    <title>Form</title>
   </head>
 
-  <body>
+<body class="body-form">
+  <header class="top">
+    <nav>
+      <div class="inline">
+        <h1><a class="hyper_underline" href="#">Form</a></h1>
+    </div>
+    <div class="inline">
+        <h1><a class="hyper_underline" href="index.html">How-We-Roll</a></h1>
+    </div>
+    <div class="inline">   
+        <h1><a class="hyper_underline" href="report.html">Report</a></h1>
+    </div>
+    </nav>
+  </header>
+  
+  <main>
+  <div class="center">
     <h2 class="title">Hva slags teammedlem er du?</h2>
-    <div class="container">
+    <div classs="inputbox" class="container">
       <form id="form" action="https://bacit.info/" method="post">
         <div class="first-name-container">
           <div class="first-name">
-            <label for="firstName">Velg favorittinsektet ditt:</label> <br />
+            <h4><label for="firstName">Velg favorittinsektet ditt:</label></h4>
             <input type="text" id="nickname" name="firstName" placeholder="Marihøne"/>  
           </div>
-        </div> <br>
+        </div>
 
         <div class="favorite-color-container">
           <div class="favorite-color">
-            <label for="color">Velg favorittfargen din:</label> 
+            <h4><label for="color">Velg favorittfargen din:</label</h4><br>
             <input type="color" name="userColor" id="userColor" />  
           </div>
-        </div> <br />
+        </div>
         <div class="title-text">
-          <label for="radioQuestion">Hva er målet med studiet ditt?</label>
+          <h4><label for="radioQuestion">Hva er målet med studiet ditt?</label></h4>
         </div>
         <div class="radio-question-container">
           <div class="radio-question">
@@ -44,7 +60,7 @@
           </div>
         </div>
         <div class="title-text">
-          <label for="radioQuestion">Hvor høyt prioriterer du studiene dine?</label>
+          <h4><label for="radioQuestion">Hvor høyt prioriterer du studiene dine?</label></h4>
         </div>
         <div class="radio-question-container">
           <div class="radio-question">
@@ -60,18 +76,18 @@
         </div>
 
         <div class="input-text-container">
-          <label for="input-text">Hvilke styrker har du når det kommer til samarbeid?</label> <br>
+          <h4><label for="input-text">Hvilke styrker har du når det kommer til samarbeid?</label></h4>
           <input type="text" id="inputText" class="input-text" name="styrke">
         </div>
 
         <div class="input-text-container">
-          <label for="input-text">Hva slags tidligere erfaringer har du?</label> <br>
+          <h4><label for="input-text">Hva slags tidligere erfaringer har du?</label></h4>
           <input type="text" id="inputText" class="input-text" name="erfaringer">
         </div>
 
         <div class="range-questions-container">
           <div class="title-text">
-            <label for="range">På en skala:</label> <br />
+            <h4><label for="range">På en skala:</label></h4>
           </div>
 
           <div class="range-question">
@@ -107,7 +123,7 @@
           <div class="range-question">
             <label for="question6" id="question" class="range-left">Avtal tid for å snakke</label> 
             <input type="range" name="question6" id="question6" class="range" class="range" value="50" min="0" max="100" />
-            <label for="question6" id="question" class="range-right">Forstyrr meg når du trenger meg</label> 
+            <label for="question6" id="question" class="range-right">Forstyrr meg</label> 
           </div> <br />
 
           <div class="range-question">
@@ -123,17 +139,14 @@
           </div>
         </div> <br />
 
-        <div class="btns">
-          <div class="submit-btn">
-            <input id="submitData" type="submit" value="Send" />
-          </div>
           <div>
-            <button id="getData" class="report-btn" onclick="location.href='report.html'">Til rapport</button>
+            <button class="button" id="submitData" type="submit" value="Send">Send Data</button>
+            <button class="button" id="getData" class="report-btn" onclick="location.href='report.html'">Til Rapport</button>
           </div>
-        </div>
       </form>
     </div>
-
+  </div>
+</main>
     <script>
       async function postData(url = "", data = {}) {
         const response = await fetch(url, {
@@ -165,5 +178,8 @@
       form.addEventListener('submit', handleSubmit);
 
     </script>
+    <footer>
+
+    </footer>
   </body>
 </html>
