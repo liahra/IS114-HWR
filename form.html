@@ -154,9 +154,12 @@
       function handleSubmit(e) {
         e.preventDefault();
 
+        // henter informasjon fra form
         const data = new FormData(e.target);
+        // lager nytt objekt i JSON-format med innholdet fra form
         const formJSON = Object.fromEntries(data.entries());
         
+        // kjører Fetch med url og objekt
         postData('https://bacit.info/', formJSON)
         .then(data => console.log(data));
       }
