@@ -7,60 +7,36 @@
     <link rel="stylesheet" href="style.css">
     <title>OUTPUT</title>
   </head>
-  <style>
-
-    *{font-family: "Avenir Next";}
-
-    h2 {text-align: center; margin-top: auto;}
-    div {
-      margin-left: 0;
-    }
-
-    hr {
-      border-style: solid;
-      border-color: darkgrey;
-      margin-bottom: 30px;
-      border-width: 1px;
-    }
-
-    .input {
-      padding: 20px;
-      border-style: solid;
-      border-width: 2px;
-      border-color: black;
-    }
-
-    .range-questions-container {
-      padding: 20px;
-      border-style: solid;
-      border-width: 2px;
-      border-color: black;
-      margin-bottom: 0;
-    }
-    
-  </style>
   <body>
+    <nav class="navbar">
+      <ul class="navbar-menu">
+        <li class="navbar-link"><a class="active" href="index.html">Hjem</a></li>
+        <li class="navbar-link"><a href="form.html">Skjema</a></li>
+        <li class="navbar-link"><a href="report.html">Rapport</a></li>
+        <li class="navbar-link"><a href="https://github.com/liahra/IS114-HWR">GitHub</a></li>
+      </ul>
+    </nav>
+    
     <div id="report">
-      <div class="container">
+      <div class="report-container">
         <h1>Rapport</h1>
-        <hr>
         <div class="input-container">
-          <div class="upper-input-container">
-            <div class="input">
+          <div class="report-input-container">
+            <div class="report-input">
               <h2>Våre studiemål:</h2>
               <div id="goals"></div>
             </div>
-            <div class="input">
-              <h2>Studieprioritering:</h2>
+            <div class="report-input">
+              <h2>Vår studieprioritering:</h2>
               <div id="prioritering"></div>
             </div>
           </div>
-          <div class="lower-input-container">
-            <div class="input">
+          <div class="report-input-container">
+            <div class="report-input">
               <h2>Våre tidligere erfaringer:</h2>
               <div id="experience"></div>
             </div>
-            <div class="input">
+            <div class="report-input">
               <h2>Våre personlige styrker:</h2>
               <div id="styrke"></div>
             </div>
