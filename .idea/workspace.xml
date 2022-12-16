@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb13346c-c14d-4817-925b-69f260085a1c" name="Changes" comment="Rapport: lagt til css i html filen og fjernet bilde">
-      <change beforePath="$PROJECT_DIR$/report.html" beforeDir="false" afterPath="$PROJECT_DIR$/report.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +63,9 @@
       <workItem from="1669367212527" duration="329000" />
       <workItem from="1669367612351" duration="6000" />
       <workItem from="1669367661541" duration="22000" />
+      <workItem from="1671183605956" duration="586000" />
+      <workItem from="1671185149816" duration="38000" />
+      <workItem from="1671185380207" duration="31000" />
     </task>
     <task id="LOCAL−00001" summary="Rapport: lagt til css i html filen">
       <created>1669224503564</created>
